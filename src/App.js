@@ -24,6 +24,7 @@ class App extends React.Component {
     this.checkEmptyInput = this.checkEmptyInput.bind(this);
   }
 
+  // função para alterar state com evento de change no Form
   onInputChange(event) {
     const { name } = event.target;
     const value = event.target.type === 'checkbox'
@@ -31,9 +32,10 @@ class App extends React.Component {
 
     this.setState({
       [name]: value,
-    }, () => this.disabledBtn());
+    }, () => this.disabledBtn()); // função com callback para que faça a cada evento a verificação de habilitar e desabilitar botão de salvar
   }
 
+  // verifica critérios para habilitar ou desabilitar botão de salvar, utiliza na condição a função checkEmptyInput
   disabledBtn() {
     const {
       cardAttr1,
@@ -60,6 +62,7 @@ class App extends React.Component {
     }
   }
 
+  // utilizado para verificar dentro da função disableBtn parte da condicional.
   checkEmptyInput() {
     const { cardName,
       cardDescription,
