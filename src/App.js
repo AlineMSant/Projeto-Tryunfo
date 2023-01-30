@@ -22,6 +22,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.disabledBtn = this.disabledBtn.bind(this);
     this.checkEmptyInput = this.checkEmptyInput.bind(this);
+    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
   }
 
   // função para alterar state com evento de change no Form
@@ -33,6 +34,19 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     }, () => this.disabledBtn()); // função com callback para que faça a cada evento a verificação de habilitar e desabilitar botão de salvar
+  }
+
+  // função limpa os inputs de form quando clica no botão salvar
+  onSaveButtonClick() {
+    this.setState({
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
+      cardImage: '',
+      cardRare: '',
+    });
   }
 
   // verifica critérios para habilitar ou desabilitar botão de salvar, utiliza na condição a função checkEmptyInput
@@ -110,6 +124,7 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
+          onSaveButtonClick={ this.onSaveButtonClick }
         />
         <Card
           cardName={ cardName }
