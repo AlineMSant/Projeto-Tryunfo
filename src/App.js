@@ -38,7 +38,7 @@ class App extends React.Component {
     }, () => this.disabledBtn()); // função com callback para que faça a cada evento a verificação de habilitar e desabilitar botão de salvar
   }
 
-  // função limpa os inputs de form e salva no state onSabeButtonClick que é uma array um novo objeto quando clica no botão salvar. pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
+  // função limpa os inputs de form quando clica no botão salvar. Utiliza a função createCard para salvar no state o novo objeto.
   onSaveButtonClick() {
     this.createCard();
     this.setState({
@@ -52,6 +52,7 @@ class App extends React.Component {
     });
   }
 
+  // função salva no state onSabeButtonClick que é uma array um novo objeto. É utilizada na função onSaveButtonClick ser executada no evento de click .pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
   createCard() {
     const { cardName,
       cardDescription,
