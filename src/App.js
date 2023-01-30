@@ -18,6 +18,7 @@ class App extends React.Component {
       cardTrunfo: false,
       isSaveButtonDisabled: true,
       onSaveButtonClick: [],
+      hasTrunfo: false,
     };
 
     this.onInputChange = this.onInputChange.bind(this);
@@ -38,7 +39,7 @@ class App extends React.Component {
     }, () => this.disabledBtn()); // função com callback para que faça a cada evento a verificação de habilitar e desabilitar botão de salvar
   }
 
-  // função limpa os inputs de form quando clica no botão salvar. Utiliza a função createCard para salvar no state o novo objeto.
+  // função limpa os inputs de form quando clica no botão salvar. Utiliza a função createCard para salvar no state o novo objeto e possui lógica para alterar informação do checkbox caso já tenha salvo um card super trunfo
   onSaveButtonClick() {
     this.createCard();
     this.setState({
@@ -50,6 +51,15 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
     });
+
+    // logica abaixo se refere ao chackbox ficar desabilitado quando já tiver incluso o super trunfo em alguma card.
+    const { cardTrunfo } = this.state;
+
+    if (cardTrunfo === true) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   }
 
   // função salva no state onSabeButtonClick que é uma array um novo objeto. É utilizada na função onSaveButtonClick ser executada no evento de click .pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
@@ -60,8 +70,7 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare,
-      cardTrunfo } = this.state;
+      cardRare } = this.state;
 
     this.setState((prevState) => ({
       onSaveButtonClick: [...prevState.onSaveButtonClick, { name: `${cardName}`,
@@ -70,8 +79,7 @@ class App extends React.Component {
         attr2: `${cardAttr2}`,
         attr3: `${cardAttr3}`,
         image: `${cardImage}`,
-        rare: `${cardRare}`,
-        trunfo: `${cardTrunfo}` }],
+        rare: `${cardRare}` }],
     }));
   }
 
@@ -135,7 +143,8 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
-      onSaveButtonClick } = this.state;
+      onSaveButtonClick,
+      hasTrunfo } = this.state;
 
     console.log(onSaveButtonClick);
 
@@ -154,6 +163,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ this.onSaveButtonClick }
+          hasTrunfo={ hasTrunfo }
         />
         <Card
           cardName={ cardName }
