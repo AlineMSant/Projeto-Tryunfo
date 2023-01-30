@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
+import Delete from './components/DeleteBtn';
 import './index.css';
 
 class App extends React.Component {
@@ -26,6 +27,7 @@ class App extends React.Component {
     this.checkEmptyInput = this.checkEmptyInput.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.createCard = this.createCard.bind(this);
+    this.onClickDeleteCard = this.onClickDeleteCard.bind(this);
   }
 
   // função para alterar state com evento de change no Form
@@ -60,6 +62,11 @@ class App extends React.Component {
         hasTrunfo: true,
       });
     }
+  }
+
+  onClickDeleteCard(event) {
+    // const { onSaveButtonClick } = this.state;
+    console.log(event.target.name);
   }
 
   // função salva no state onSabeButtonClick que é uma array um novo objeto. É utilizada na função onSaveButtonClick ser executada no evento de click .pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
@@ -193,7 +200,7 @@ class App extends React.Component {
                 cardRare={ obj.rare }
                 cardTrunfo={ Boolean(obj.trunfo) }
               />
-              <button data-testid="delete-button">Excluir</button>
+              <Delete onClickDeleteCard={ this.onClickDeleteCard } name={ obj.name } />
             </div>)) }
 
         </div>
