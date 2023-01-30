@@ -17,12 +17,14 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      onSaveButtonClick: [],
     };
 
     this.onInputChange = this.onInputChange.bind(this);
     this.disabledBtn = this.disabledBtn.bind(this);
     this.checkEmptyInput = this.checkEmptyInput.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
+    this.createCard = this.createCard.bind(this);
   }
 
   // função para alterar state com evento de change no Form
@@ -36,8 +38,9 @@ class App extends React.Component {
     }, () => this.disabledBtn()); // função com callback para que faça a cada evento a verificação de habilitar e desabilitar botão de salvar
   }
 
-  // função limpa os inputs de form quando clica no botão salvar
+  // função limpa os inputs de form e salva no state onSabeButtonClick que é uma array um novo objeto quando clica no botão salvar. pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
   onSaveButtonClick() {
+    this.createCard();
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -47,6 +50,26 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
     });
+  }
+
+  createCard() {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare } = this.state;
+
+    this.setState((prevState) => ({
+      onSaveButtonClick: [...prevState.onSaveButtonClick, { name: `${cardName}`,
+        description: `${cardDescription}`,
+        attr1: `${cardAttr1}`,
+        attr2: `${cardAttr2}`,
+        attr3: `${cardAttr3}`,
+        image: `${cardImage}`,
+        rare: `${cardRare}` }],
+    }));
   }
 
   // verifica critérios para habilitar ou desabilitar botão de salvar, utiliza na condição a função checkEmptyInput
@@ -108,7 +131,10 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      isSaveButtonDisabled } = this.state;
+      isSaveButtonDisabled,
+      onSaveButtonClick } = this.state;
+
+    console.log(onSaveButtonClick);
 
     return (
       <div>
