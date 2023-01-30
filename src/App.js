@@ -180,17 +180,21 @@ class App extends React.Component {
           cardTrunfo={ cardTrunfo }
         />
         <div>
-          { onSaveButtonClick.map((obj, index) => (<Card
-            key={ index }
-            cardName={ obj.name }
-            cardDescription={ obj.description }
-            cardAttr1={ obj.attr1 }
-            cardAttr2={ obj.attr2 }
-            cardAttr3={ obj.attr3 }
-            cardImage={ obj.image }
-            cardRare={ obj.rare }
-            cardTrunfo={ Boolean(obj.trunfo) }
-          />)) }
+          { onSaveButtonClick.map((obj, index) => (
+            <div key={ index }>
+              <Card
+                key={ index }
+                cardName={ obj.name }
+                cardDescription={ obj.description }
+                cardAttr1={ obj.attr1 }
+                cardAttr2={ obj.attr2 }
+                cardAttr3={ obj.attr3 }
+                cardImage={ obj.image }
+                cardRare={ obj.rare }
+                cardTrunfo={ Boolean(obj.trunfo) }
+              />
+              <button data-testid="delete-button">Excluir</button>
+            </div>)) }
 
         </div>
       </div>
