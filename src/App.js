@@ -60,7 +60,8 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.state;
+      cardRare,
+      cardTrunfo } = this.state;
 
     this.setState((prevState) => ({
       onSaveButtonClick: [...prevState.onSaveButtonClick, { name: `${cardName}`,
@@ -69,7 +70,8 @@ class App extends React.Component {
         attr2: `${cardAttr2}`,
         attr3: `${cardAttr3}`,
         image: `${cardImage}`,
-        rare: `${cardRare}` }],
+        rare: `${cardRare}`,
+        trunfo: `${cardTrunfo}` }],
     }));
   }
 
