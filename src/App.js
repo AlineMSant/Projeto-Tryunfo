@@ -70,7 +70,8 @@ class App extends React.Component {
       cardAttr2,
       cardAttr3,
       cardImage,
-      cardRare } = this.state;
+      cardRare,
+      cardTrunfo } = this.state;
 
     this.setState((prevState) => ({
       onSaveButtonClick: [...prevState.onSaveButtonClick, { name: `${cardName}`,
@@ -79,7 +80,8 @@ class App extends React.Component {
         attr2: `${cardAttr2}`,
         attr3: `${cardAttr3}`,
         image: `${cardImage}`,
-        rare: `${cardRare}` }],
+        rare: `${cardRare}`,
+        trunfo: `${cardTrunfo}` }],
     }));
   }
 
@@ -148,6 +150,8 @@ class App extends React.Component {
 
     console.log(onSaveButtonClick);
 
+    // div no return se refere a renderização de novos cards depois que salva
+
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -175,6 +179,20 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        <div>
+          { onSaveButtonClick.map((obj, index) => (<Card
+            key={ index }
+            cardName={ obj.name }
+            cardDescription={ obj.description }
+            cardAttr1={ obj.attr1 }
+            cardAttr2={ obj.attr2 }
+            cardAttr3={ obj.attr3 }
+            cardImage={ obj.image }
+            cardRare={ obj.rare }
+            cardTrunfo={ Boolean(obj.trunfo) }
+          />)) }
+
+        </div>
       </div>
     );
   }
