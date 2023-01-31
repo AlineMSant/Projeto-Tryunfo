@@ -64,8 +64,17 @@ class App extends React.Component {
     }
   }
 
+  // função deleta card quando clica em excluir e retorna o Super Trunfo no formulário caso exclua uma carta super trunfo
   onClickDeleteCard(event) {
-    console.log(event.target.name);
+    const { onSaveButtonClick } = this.state;
+
+    onSaveButtonClick.forEach((card) => {
+      if (card.name === event.target.name && card.trunfo === 'true') {
+        this.setState({
+          hasTrunfo: false,
+        });
+      }
+    });
 
     this.setState((prevState) => ({
       onSaveButtonClick: prevState.onSaveButtonClick
@@ -158,8 +167,6 @@ class App extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
       hasTrunfo } = this.state;
-
-    console.log(onSaveButtonClick);
 
     // div no return se refere a renderização de novos cards depois que salva
 
