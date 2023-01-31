@@ -65,8 +65,12 @@ class App extends React.Component {
   }
 
   onClickDeleteCard(event) {
-    // const { onSaveButtonClick } = this.state;
     console.log(event.target.name);
+
+    this.setState((prevState) => ({
+      onSaveButtonClick: prevState.onSaveButtonClick
+        .filter((card) => card.name !== event.target.name),
+    }));
   }
 
   // função salva no state onSabeButtonClick que é uma array um novo objeto. É utilizada na função onSaveButtonClick ser executada no evento de click .pesquisa sobre como dar push em state com array https://stackoverflow.com/questions/37435334/correct-way-to-push-into-state-array
