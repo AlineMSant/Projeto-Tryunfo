@@ -69,7 +69,7 @@ class App extends React.Component {
     const { onSaveButtonClick } = this.state;
 
     onSaveButtonClick.forEach((card) => {
-      if (card.name === event.target.name && card.trunfo === 'true') {
+      if (card.name === event.target.name && card.trunfo === true) {
         this.setState({
           hasTrunfo: false,
         });
@@ -101,7 +101,7 @@ class App extends React.Component {
         attr3: `${cardAttr3}`,
         image: `${cardImage}`,
         rare: `${cardRare}`,
-        trunfo: `${cardTrunfo}` }],
+        trunfo: cardTrunfo }],
     }));
   }
 
@@ -209,7 +209,7 @@ class App extends React.Component {
                 cardAttr3={ obj.attr3 }
                 cardImage={ obj.image }
                 cardRare={ obj.rare }
-                cardTrunfo={ Boolean(obj.trunfo) }
+                cardTrunfo={ obj.trunfo }
               />
               <Delete onClickDeleteCard={ this.onClickDeleteCard } name={ obj.name } />
             </div>)) }
