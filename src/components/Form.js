@@ -18,7 +18,7 @@ class Form extends React.Component {
       onSaveButtonClick } = this.props;
 
     const checkSuperTrybeTrunfo = (
-      <label htmlFor="super">
+      <label className="super-bazinga" htmlFor="super">
         <input
           id="super"
           type="checkbox"
@@ -27,14 +27,16 @@ class Form extends React.Component {
           checked={ cardTrunfo }
           onChange={ onInputChange }
         />
-        Super Trybe Trunfo
+        BAZINGA !!!
       </label>
     );
 
     return (
-      <div className="form">
+      <div className="form-container">
 
-        <label htmlFor="name">
+        <h3>ADICIONE NOVA CARTA</h3>
+
+        <label className="input-form" htmlFor="name">
           Nome
           <input
             data-testid="name-input"
@@ -44,9 +46,10 @@ class Form extends React.Component {
             value={ cardName }
             onChange={ onInputChange }
           />
+          <hr />
         </label>
 
-        <label htmlFor="description">
+        <label className="input-form" htmlFor="description">
           Descrição
           <textarea
             data-testid="description-input"
@@ -55,10 +58,11 @@ class Form extends React.Component {
             value={ cardDescription }
             onChange={ onInputChange }
           />
+          <hr />
         </label>
 
-        <label htmlFor="attr1">
-          Attr01
+        <label className="attr" htmlFor="attr1">
+          QI
           <input
             data-testid="attr1-input"
             type="number"
@@ -69,8 +73,8 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="attr2">
-          Attr02
+        <label className="attr" htmlFor="attr2">
+          Força
           <input
             data-testid="attr2-input"
             type="number"
@@ -81,8 +85,8 @@ class Form extends React.Component {
           />
         </label>
 
-        <label htmlFor="attr3">
-          Attr03
+        <label className="attr" htmlFor="attr3">
+          Popularidade
           <input
             data-testid="attr3-input"
             type="number"
@@ -93,9 +97,9 @@ class Form extends React.Component {
           />
         </label>
 
-        <p>Pontos restantes = 000</p>
+        {/* <p>Pontos restantes = 000</p> */}
 
-        <label htmlFor="img">
+        <label className="form-img" htmlFor="img">
           Imagem
           <input
             data-testid="image-input"
@@ -104,10 +108,11 @@ class Form extends React.Component {
             name="cardImage"
             value={ cardImage }
             onChange={ onInputChange }
+            placeholder="URL image address"
           />
         </label>
 
-        <label htmlFor="rare">
+        <label className="input-form" htmlFor="rare">
           Raridade
           <select
             id="rare"
@@ -116,28 +121,33 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
+            <option>selecione</option>
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
         </label>
 
-        <p>Total de pontos = 000</p>
+        {/* <p>Total de pontos = 000</p> */}
 
-        <div>
-          {hasTrunfo === true ? <p>Você já tem um Super Trunfo em seu baralho</p>
-            : checkSuperTrybeTrunfo}
+        <div className="form-super-btn-container">
+          <div>
+            {hasTrunfo === true ? <p>Você já tem um Super Trunfo em seu baralho</p>
+              : checkSuperTrybeTrunfo}
+          </div>
+
+          <button
+            type="button"
+            data-testid="save-button"
+            name="isSaveButtonDisabled"
+            disabled={ isSaveButtonDisabled }
+            onClick={ onSaveButtonClick }
+          >
+            Salvar
+          </button>
+
         </div>
 
-        <button
-          type="button"
-          data-testid="save-button"
-          name="isSaveButtonDisabled"
-          disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
-        >
-          Salvar
-        </button>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Attr from './Attr';
 
 class Card extends React.Component {
   render() {
@@ -13,32 +14,43 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo } = this.props;
     return (
-      <div>
-        <p data-testid="name-card">
-          { cardName }
-        </p>
-        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
-        <p data-testid="description-card">
-          Descrição
-          { cardDescription }
-        </p>
-        <p data-testid="attr1-card">
-          Attr1
-          { cardAttr1 }
-        </p>
-        <p data-testid="attr2-card">
-          Attr2
-          { cardAttr2 }
-        </p>
-        <p data-testid="attr3-card">
-          Attr3
-          { cardAttr3 }
-        </p>
-        <p data-testid="rare-card">
-          Raridade
-          { cardRare }
-        </p>
-        <div>{cardTrunfo === true && <p data-testid="trunfo-card">Super Trunfo</p>}</div>
+      <div className="card-out-container">
+        <div className="card-mid-container">
+          <div className="card-container">
+
+            <p className="card-name" data-testid="name-card">
+              { cardName }
+            </p>
+            <div className="img-card-container">
+              <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+            </div>
+            <p className="card-description" data-testid="description-card">
+              { cardDescription }
+            </p>
+
+            <div className="attr-card-container">
+              <Attr
+                cardAttr1={ cardAttr1 }
+                cardAttr2={ cardAttr2 }
+                cardAttr3={ cardAttr3 }
+              />
+
+            </div>
+
+            <div className="card-rare-trunfo-container">
+              <p className="card-rare" data-testid="rare-card">
+                { cardRare }
+              </p>
+              <div>
+                {cardTrunfo === true && (
+                  <p className="super-bazinga" data-testid="trunfo-card">BAZINGA !!!</p>)}
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     );
   }
