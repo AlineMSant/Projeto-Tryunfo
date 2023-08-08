@@ -11,6 +11,12 @@ npm install
 npm start
 ```
 
+## Validações da aplicação:
+- A carta só será salva, após o preenchimento de todos os campos;
+- A soma de QI, Força e Popularidade deve ser menor ou igual a 210 pontos;
+- QI, Força e Popularidade podem ser de até 90 pontos cada;
+- Só deve ser possível adicionar uma única carta "Bazinga" ao baralho.
+
 ## Habilidades desenvolvidas:
 - Ler o estado de um componente e utilizá-lo para alterar o que é exibido no browser.
 - Inicializar um componente, fornecendo um estado pré-definido.
